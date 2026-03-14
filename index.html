@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Chaya Premi official website. Thodupuzha and Muvattupuzha. Tea, snacks, and good vibes."
+    />
+    <title>Chaya Premi | Thodupuzha & Muvattupuzha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="steam">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="cup">
+        <div class="cup-body"></div>
+        <div class="cup-handle"></div>
+        <div class="cup-liquid"></div>
+      </div>
+      <div class="loader-text">Brewing the vibe...</div>
+    </div>
+
+    <header class="hero" id="home">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-content">
+        <img class="hero-logo" src="chaya%20premi%20logo.jpg" alt="Chaya Premi" />
+        <h1>Tea. Talks. Thunderous Vibes.</h1>
+        <p class="hero-sub">
+          Two iconic hangouts in Thodupuzha and Muvattupuzha. Come for the chai,
+          stay for the energy.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#find-us">Find Us</a>
+          <a class="btn ghost" href="#gram">See the Gram</a>
+        </div>
+      </div>
+      <div class="hero-marquee">
+        <span>Chaya + Snacks + Friends</span>
+        <span>Fresh Brews Daily</span>
+        <span>Open Late</span>
+        <span>Chaya + Snacks + Friends</span>
+        <span>Fresh Brews Daily</span>
+        <span>Open Late</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="section about" id="about">
+        <div class="section-header">
+        <p class="eyebrow">The Vibe</p>
+          <h2>Where chai culture meets bold energy.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Local Legends</h3>
+            <p>
+              Chaya Premi is built for the neighborhood. Quick pit stops,
+              long chats, and a buzz you can feel.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Fast + Fresh</h3>
+            <p>
+              Crafted teas, crispy bites, and a menu that keeps the crowd
+              moving.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Camera Ready</h3>
+            <p>
+              Every corner is a backdrop. Come hungry, leave with content.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gram" id="gram">
+        <div class="section-header">
+          <p class="eyebrow">The Gram</p>
+          <h2>See what we're pouring.</h2>
+        </div>
+        <div class="gram-grid" id="instagram-grid" aria-live="polite"></div>
+        <div class="section-footnote">
+          Tap a post to open in Instagram.
+        </div>
+      </section>
+
+      <section class="section reviews" id="reviews">
+        <div class="section-header">
+          <p class="eyebrow">Wall of Love</p>
+          <h2>Real words from real chai people.</h2>
+        </div>
+        <div class="reviews-slider">
+          <button class="slider-btn" id="reviews-prev" aria-label="Previous review">
+            &#8592;
+          </button>
+          <div class="slider-track" aria-live="polite">
+            <div class="slider-inner" id="reviews-track"></div>
+          </div>
+          <button class="slider-btn" id="reviews-next" aria-label="Next review">
+            &#8594;
+          </button>
+        </div>
+      </section>
+
+      <section class="section locations" id="find-us">
+        <div class="section-header">
+          <p class="eyebrow">Find Us</p>
+          <h2>Two stops. Same signature energy.</h2>
+        </div>
+        <div class="location-grid">
+          <article class="location-card" data-animate>
+            <div class="location-meta">
+              <h3>Thodupuzha</h3>
+              <p class="location-address">
+                Address: <span data-address="thodupuzha">Add exact address</span>
+              </p>
+              <p class="location-hours">
+                Hours: <span data-hours="thodupuzha">Add hours</span>
+              </p>
+            </div>
+            <a
+              class="btn primary"
+              data-directions="thodupuzha"
+              href="#"
+              rel="noopener"
+              >Get Directions</a
+            >
+          </article>
+          <article class="location-card" data-animate>
+            <div class="location-meta">
+              <h3>Muvattupuzha</h3>
+              <p class="location-address">
+                Address: <span data-address="muvattupuzha">Add exact address</span>
+              </p>
+              <p class="location-hours">
+                Hours: <span data-hours="muvattupuzha">Add hours</span>
+              </p>
+            </div>
+            <a
+              class="btn primary"
+              data-directions="muvattupuzha"
+              href="#"
+              rel="noopener"
+              >Get Directions</a
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#gram">Gram</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#find-us">Find Us</a>
+    </nav>
+
+    <footer class="footer">
+      <div>
+        <strong>Chaya Premi</strong>
+        <p>Thodupuzha & Muvattupuzha</p>
+      </div>
+      <p class="footer-note">Brewed with love in Kerala.</p>
+    </footer>
+
+    <script>
+      window.CP_CONFIG = {
+        instagram: {
+          accessToken: "",
+          userId: "",
+          limit: 9,
+        },
+        reviews: {
+          endpoint: "",
+          apiKey: "",
+          places: [
+            { name: "Thodupuzha", placeId: "" },
+            { name: "Muvattupuzha", placeId: "" },
+          ],
+        },
+        locations: {
+          thodupuzha: {
+            address:
+              "Vengalloor - Kolani Bypass Road, Opposite Autojet Car Detailing, Thodupuzha, Kerala 685608",
+            hours: "Open 24 hrs (confirm)",
+            mapsQuery:
+              "Vengalloor - Kolani Bypass Road, Opposite Autojet Car Detailing, Thodupuzha, Kerala 685608",
+          },
+          muvattupuzha: {
+            address:
+              "14/212/E, Pezhakkappilly, MC Road, Muvattupuzha Bazar, Ernakulam 686673, Kerala",
+            hours: "Open 24 hrs (confirm)",
+            mapsQuery:
+              "14/212/E, Pezhakkappilly, MC Road, Muvattupuzha Bazar, Ernakulam 686673, Kerala",
+          },
+        },
+      };
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
