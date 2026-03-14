@@ -312,9 +312,44 @@ const initLocations = () => {
   });
 };
 
+const initScrollProgress = () => {
+  const bar = document.getElementById("scroll-progress");
+  if (!bar) return;
+  const update = () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = total > 0 ? `${(scrolled / total) * 100}%` : "0%";
+  };
+  window.addEventListener("scroll", update, { passive: true });
+};
+
+const initActiveNav = () => {
+  const links = document.querySelectorAll(".bottom-nav a");
+  const sections = Array.from(links)
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        links.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      });
+    },
+    { rootMargin: "-40% 0px -55% 0px" }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+};
+
 const init = async () => {
   revealOnScroll();
   initLocations();
+  initScrollProgress();
+  initActiveNav();
   await loadInstagram();
   const reviews = await fetchReviews();
   const cleaned = reviews.filter((review) => review.rating >= 4);
