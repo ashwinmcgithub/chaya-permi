@@ -1025,6 +1025,235 @@ a { color: inherit; text-decoration: none; }
 .footer p { color: var(--muted); }
 .footer-note { margin-top: 24px; font-size: 0.8rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
 
+/* ===== HERO TEA CUP (desktop decorative) ===== */
+.hero-tea {
+  display: none; /* hidden on mobile */
+  position: absolute;
+  right: 9%;
+  bottom: 105px;
+  z-index: 3;
+  pointer-events: none;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+}
+
+@media (min-width: 1060px) {
+  .hero-tea { display: flex; }
+}
+
+/* Steam wisps */
+.htea-steam {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  height: 92px;
+  margin-bottom: 2px;
+}
+
+.htea-steam span {
+  width: 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  filter: blur(5px);
+  animation: steamRise 2.6s ease-in-out infinite;
+}
+
+.htea-steam span:nth-child(1) { height: 44px; animation-delay: 0s; }
+.htea-steam span:nth-child(2) { height: 74px; animation-delay: 0.38s; }
+.htea-steam span:nth-child(3) { height: 36px; animation-delay: 0.76s; }
+.htea-steam span:nth-child(4) { height: 62px; animation-delay: 0.19s; }
+.htea-steam span:nth-child(5) { height: 52px; animation-delay: 0.57s; }
+
+/* Cup wrap */
+.htea-cup-wrap {
+  position: relative;
+  width: 220px;
+}
+
+/* Rim */
+.htea-rim {
+  width: 244px;
+  height: 18px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.05);
+  border: 3px solid rgba(255,85,0,0.65);
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 24px rgba(255,85,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Body */
+.htea-body {
+  width: 220px;
+  height: 158px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  border: 3px solid rgba(255,85,0,0.6);
+  border-top: none;
+  border-radius: 0 0 48px 48px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 50px rgba(255,85,0,0.18),
+    inset 0 0 60px rgba(255,85,0,0.05);
+}
+
+/* Liquid fill */
+.htea-liquid {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(180deg, rgba(255,130,50,0.6) 0%, rgba(255,85,0,0.42) 100%);
+  animation: htFill 3.5s ease-in-out infinite alternate;
+}
+
+.htea-liquid::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: -10%;
+  width: 120%; height: 16px;
+  background: rgba(255,140,60,0.7);
+  border-radius: 50%;
+  animation: htWave 2.4s ease-in-out infinite;
+}
+
+/* Surface sheen */
+.htea-sheen {
+  position: absolute;
+  top: 12px; left: 18px;
+  width: 40px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  animation: htSheen 4s ease-in-out infinite;
+}
+
+/* Handle */
+.htea-handle {
+  position: absolute;
+  right: -24px;
+  top: 26px;
+  width: 46px;
+  height: 58px;
+  border: 5px solid rgba(255,85,0,0.6);
+  border-left-color: transparent;
+  border-radius: 50%;
+  box-shadow: 3px 0 16px rgba(255,85,0,0.15);
+}
+
+/* Saucer */
+.htea-saucer {
+  width: 274px;
+  height: 18px;
+  background: rgba(255,85,0,0.1);
+  border: 2px solid rgba(255,85,0,0.38);
+  border-radius: 50%;
+  margin-top: 5px;
+  box-shadow: 0 6px 24px rgba(255,85,0,0.1);
+}
+
+/* Brand label on cup */
+.htea-label {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Bebas Neue", cursive;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,85,0,0.5);
+  text-align: center;
+  line-height: 1.3;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Tea-specific keyframes */
+@keyframes htFill {
+  0%   { height: 48px; }
+  100% { height: 86px; }
+}
+
+@keyframes htWave {
+  0%, 100% { transform: translateX(-5%) scaleY(1); }
+  50%       { transform: translateX(5%) scaleY(1.5); }
+}
+
+@keyframes htSheen {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50%       { transform: translateX(28px); opacity: 0.1; }
+}
+
+/* ===== DESKTOP REVIEWS GRID ===== */
+@media (min-width: 900px) {
+  .reviews-header-row { margin-bottom: 44px; }
+
+  /* Hide slider controls — show all cards as a grid */
+  .slider-btn { display: none; }
+  .reviews-slider { display: block; }
+  .slider-track { border-radius: 0; overflow: visible; }
+
+  .slider-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    /* Prevent JS transform from shifting cards */
+    transform: none !important;
+  }
+
+  .review-card {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    min-height: 230px;
+  }
+}
+
+/* ===== DESKTOP INSTAGRAM GRID ===== */
+@media (min-width: 900px) {
+  .gram-profile {
+    max-width: 980px;
+    padding: 70px 48px 44px;
+    gap: 72px;
+  }
+
+  .gram-avatar-wrap { width: 160px; height: 160px; }
+  .gram-username { font-size: 1.55rem; }
+  .gram-stats { gap: 44px; }
+  .gram-stat strong { font-size: 1.2rem; }
+  .gram-stat span { font-size: 0.78rem; }
+  .gram-bio { font-size: 0.95rem; }
+  .gram-follow-btn { font-size: 0.85rem; padding: 10px 28px; }
+
+  .gram-tabs { max-width: 980px; }
+  .gram-tab { font-size: 0.8rem; padding: 14px 0; }
+
+  .gram-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    gap: 4px;
+  }
+
+  /* First item: featured 2×2 */
+  .gram-item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    aspect-ratio: unset;
+  }
+
+  /* All non-first items: keep square */
+  .gram-item:not(:first-child) {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Last item: full-width landscape banner */
+  .gram-item:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 21 / 7;
+  }
+}
+
 /* ===== KEYFRAMES ===== */
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.7; transform: scale(1); }

@@ -251,6 +251,8 @@ const setupReviewsSlider = (count) => {
   const prevBtn = document.getElementById("reviews-prev");
   const nextBtn = document.getElementById("reviews-next");
   if (!track || !prevBtn || !nextBtn) return;
+  // Desktop shows all cards in a CSS grid — slider not needed
+  if (window.innerWidth >= 900) return;
 
   let index = 0;
   const update = () => {
