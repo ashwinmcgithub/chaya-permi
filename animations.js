@@ -223,13 +223,30 @@ function initScrollAnimations() {
     });
   }
 
-  // Video grid — cascade reveal with scale
+  // Gram profile header
+  gsap.from(".gram-avatar-wrap", {
+    scrollTrigger: { trigger: ".gram-profile", start: "top 85%" },
+    scale: 0, opacity: 0, duration: 0.6, ease: "back.out(1.8)",
+  });
+
+  gsap.from(".gram-profile-info > *", {
+    scrollTrigger: { trigger: ".gram-profile", start: "top 85%" },
+    x: 30, opacity: 0, stagger: 0.1, duration: 0.55, ease: "power3.out",
+  });
+
+  gsap.from(".gram-tabs", {
+    scrollTrigger: { trigger: ".gram-tabs", start: "top 90%" },
+    y: 20, opacity: 0, duration: 0.5, ease: "power2.out",
+  });
+
+  // Video grid — Instagram-style cascade (row by row, 3 cols)
   gsap.utils.toArray(".gram-item").forEach((item, i) => {
+    const col = i % 3;
     gsap.from(item, {
-      scrollTrigger: { trigger: item, start: "top 92%" },
-      scale: 0.8, opacity: 0,
-      duration: 0.55,
-      delay: (i % 4) * 0.08,
+      scrollTrigger: { trigger: item, start: "top 95%" },
+      scale: 0.85, opacity: 0,
+      duration: 0.5,
+      delay: col * 0.07,
       ease: "power3.out",
     });
   });

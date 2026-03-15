@@ -531,44 +531,229 @@ a { color: inherit; text-decoration: none; }
 
 .about-card p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
 
-/* ===== MEDIA GRID ===== */
-.gram { background: var(--black); }
+/* ===== INSTAGRAM GRID ===== */
+.gram {
+  background: var(--black);
+  padding-bottom: 0;
+}
 
-.gram-grid {
-  max-width: var(--max);
+/* ── Profile Header ── */
+.gram-profile {
+  max-width: 640px;
   margin: 0 auto;
+  padding: 48px 20px 28px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.gram-avatar-wrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--orange), #FFD234, var(--orange-2));
+}
+
+.gram-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--black);
+}
+
+.gram-profile-info { flex: 1; min-width: 0; }
+
+.gram-username-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.gram-username {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.gram-verified {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.gram-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.gram-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.gram-stat strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.gram-stat span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: lowercase;
+}
+
+.gram-bio {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.gram-follow-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 8px 22px;
+  border-radius: 8px;
+  transition: background 0.25s ease, transform 0.25s ease;
+  will-change: transform;
+}
+
+.gram-follow-btn:hover {
+  background: var(--orange-2);
+  transform: translateY(-2px);
+}
+
+/* ── Tabs ── */
+.gram-tabs {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.gram-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.gram-tab.active {
+  color: var(--white);
+  border-bottom-color: var(--orange);
+}
+
+.gram-tab svg { flex-shrink: 0; }
+
+/* ── Grid ── */
+.gram-grid {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  /* No max-width — goes full width like Instagram */
 }
 
 .gram-item {
   position: relative;
-  border-radius: var(--r-md);
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  aspect-ratio: 9 / 16;
   background: var(--card);
   cursor: pointer;
   will-change: transform;
 }
 
 .gram-item video {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.gram-item::after {
+/* Reel icon top-right (always visible on mobile) */
+.gram-item::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(255,85,0,0.65) 0%, rgba(8,8,8,0) 60%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  z-index: 3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7));
+  opacity: 0.85;
 }
 
-.gram-item:hover::after { opacity: 1; }
-.gram-item:hover video { transform: scale(1.05); }
+/* Hover overlay */
+.gram-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.gram-item-overlay span {
+  color: var(--white);
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+/* Desktop: show overlay on hover */
+@media (hover: hover) {
+  .gram-item:hover .gram-item-overlay { opacity: 1; }
+  .gram-item:hover video { transform: scale(1.06); }
+}
+
+/* Mobile: always show a subtle play indicator */
+@media (hover: none) {
+  .gram-item-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+    opacity: 1;
+  }
+  .gram-item-overlay span {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+}
 
 .section-footnote {
   max-width: var(--max);
@@ -889,13 +1074,20 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== DESKTOP ===== */
 @media (min-width: 640px) {
-  .gram-grid { grid-template-columns: repeat(3, 1fr); }
+  .gram-profile { padding: 60px 24px 32px; }
+  .gram-avatar-wrap { width: 110px; height: 110px; }
+  .gram-username { font-size: 1.3rem; }
+  .gram-stats { gap: 32px; }
+  .gram-stat strong { font-size: 1.1rem; }
+  .gram-bio { font-size: 0.88rem; }
+  .gram-tabs { max-width: 640px; }
 }
 
 @media (min-width: 900px) {
   .hero { padding: 150px 80px 110px; }
   .section { padding: 120px 80px; }
-  .gram-grid { grid-template-columns: repeat(4, 1fr); }
+  /* Keep gram full-width 3-col on desktop too — true Instagram feel */
+  .gram-grid { gap: 4px; }
 
   .bottom-nav {
     position: fixed;
