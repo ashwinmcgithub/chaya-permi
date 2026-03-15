@@ -49,21 +49,105 @@
       <div class="hero-media" aria-hidden="true"></div>
       <div id="hero-particles" aria-hidden="true"></div>
 
-      <!-- Animated tea cup (desktop only) -->
+      <!-- Animated SVG tea cup (desktop only) -->
       <div class="hero-tea" aria-hidden="true">
-        <div class="htea-steam">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <div class="htea-cup-wrap">
-          <div class="htea-rim"></div>
-          <div class="htea-body">
-            <div class="htea-liquid"></div>
-            <div class="htea-sheen"></div>
-          </div>
-          <div class="htea-handle"></div>
-        </div>
-        <div class="htea-saucer"></div>
-        <div class="htea-label">CHAI<br>PREMI</div>
+        <svg class="tea-svg" viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+          <defs>
+            <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF8030" stop-opacity="0.78"/>
+              <stop offset="100%" stop-color="#FF5500" stop-opacity="0.55"/>
+            </linearGradient>
+            <radialGradient id="cupGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FF5500" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="softglow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="14" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <clipPath id="cc">
+              <path d="M 38 68 L 242 68 L 220 256 Q 140 284 60 256 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- Ambient orange glow behind cup -->
+          <ellipse cx="140" cy="185" rx="105" ry="95" fill="url(#cupGlow)" filter="url(#softglow)"/>
+
+          <!-- Saucer shadow/glow -->
+          <ellipse cx="140" cy="302" rx="118" ry="22" fill="rgba(255,85,0,0.18)" filter="url(#softglow)"/>
+
+          <!-- Saucer -->
+          <ellipse cx="140" cy="296" rx="117" ry="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,85,0,0.5)" stroke-width="2.5"/>
+          <ellipse cx="140" cy="296" rx="82" ry="11" fill="none" stroke="rgba(255,85,0,0.22)" stroke-width="1.5"/>
+
+          <!-- Cup body (glassy) -->
+          <path d="M 38 68 L 242 68 L 220 256 Q 140 284 60 256 Z"
+            fill="rgba(255,255,255,0.025)"
+            stroke="rgba(255,85,0,0.68)" stroke-width="3" stroke-linejoin="round"
+            filter="url(#glow)"/>
+
+          <!-- Tea liquid (clipped, animated) -->
+          <g clip-path="url(#cc)">
+            <rect x="28" y="155" width="224" height="140" fill="url(#tg)">
+              <animate attributeName="y" values="168;150;168" dur="3.8s" repeatCount="indefinite"
+                calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+            </rect>
+            <!-- Wave surface -->
+            <path stroke="rgba(255,145,60,0.7)" stroke-width="3.5" fill="rgba(255,140,55,0.28)" stroke-linecap="round">
+              <animate attributeName="d"
+                values="M 38 168 C 85 158,125 178,168 165 C 205 154,228 170,245 163 L 245 300 L 38 300 Z;
+                        M 38 150 C 80 160,118 143,165 154 C 205 163,228 148,245 155 L 245 300 L 38 300 Z;
+                        M 38 168 C 85 158,125 178,168 165 C 205 154,228 170,245 163 L 245 300 L 38 300 Z"
+                dur="3.8s" repeatCount="indefinite"
+                calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+            </path>
+            <!-- Surface sheen -->
+            <ellipse cx="88" cy="178" rx="30" ry="8" fill="rgba(255,255,255,0.13)">
+              <animate attributeName="opacity" values="0.13;0.04;0.13" dur="3.2s" repeatCount="indefinite"/>
+            </ellipse>
+          </g>
+
+          <!-- Rim (on top of liquid clip) -->
+          <ellipse cx="140" cy="68" rx="102" ry="17"
+            fill="rgba(255,255,255,0.04)" stroke="rgba(255,85,0,0.68)" stroke-width="2.8"/>
+          <!-- Rim highlight -->
+          <path d="M 58 64 Q 140 56 222 64" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- Handle -->
+          <path d="M 242 108 C 302 108, 302 218, 242 218"
+            fill="none" stroke="rgba(255,85,0,0.68)" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+          <path d="M 242 120 C 287 120, 287 206, 242 206"
+            fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="3.5" stroke-linecap="round"/>
+
+          <!-- Brand label -->
+          <text x="140" y="226" text-anchor="middle"
+            font-family="Bebas Neue, cursive" font-size="15" letter-spacing="5"
+            fill="rgba(255,85,0,0.38)">CHAI PREMI</text>
+
+          <!-- Decorative line under label -->
+          <line x1="100" y1="232" x2="180" y2="232" stroke="rgba(255,85,0,0.2)" stroke-width="1"/>
+
+          <!-- Steam wisps (CSS-animated) -->
+          <g class="tea-steam">
+            <path class="ts ts1" d="M 85 56 Q 73 36 88 10"   fill="none" stroke="rgba(255,255,255,0.52)" stroke-width="5.5" stroke-linecap="round"/>
+            <path class="ts ts2" d="M 113 51 Q 101 28 116 2" fill="none" stroke="rgba(255,255,255,0.46)" stroke-width="5"   stroke-linecap="round"/>
+            <path class="ts ts3" d="M 140 48 Q 128 24 143 -2" fill="none" stroke="rgba(255,255,255,0.58)" stroke-width="6" stroke-linecap="round"/>
+            <path class="ts ts4" d="M 167 51 Q 179 28 164 2" fill="none" stroke="rgba(255,255,255,0.46)" stroke-width="5"   stroke-linecap="round"/>
+            <path class="ts ts5" d="M 195 56 Q 207 36 192 10" fill="none" stroke="rgba(255,255,255,0.52)" stroke-width="5.5" stroke-linecap="round"/>
+          </g>
+
+          <!-- Sparkle dots -->
+          <circle cx="28" cy="148" r="2.5" fill="rgba(255,85,0,0.65)"><animate attributeName="opacity" values="0.65;0;0.65" dur="2.4s" begin="0s"   repeatCount="indefinite"/></circle>
+          <circle cx="256" cy="128" r="2"   fill="rgba(255,85,0,0.55)"><animate attributeName="opacity" values="0.55;0;0.55" dur="2.9s" begin="0.5s" repeatCount="indefinite"/></circle>
+          <circle cx="18"  cy="205" r="1.8" fill="rgba(255,130,50,0.5)"><animate attributeName="opacity" values="0.5;0;0.5"   dur="3.2s" begin="0.9s" repeatCount="indefinite"/></circle>
+          <circle cx="268" cy="190" r="2.2" fill="rgba(255,85,0,0.58)"><animate attributeName="opacity" values="0.58;0;0.58" dur="2.6s" begin="1.3s" repeatCount="indefinite"/></circle>
+          <circle cx="38"  cy="88"  r="1.5" fill="rgba(255,130,50,0.42)"><animate attributeName="opacity" values="0.42;0;0.42" dur="2.7s" begin="0.7s" repeatCount="indefinite"/></circle>
+          <circle cx="246" cy="78"  r="1.5" fill="rgba(255,85,0,0.4)"><animate attributeName="opacity" values="0.4;0;0.4"   dur="3s"   begin="0.3s" repeatCount="indefinite"/></circle>
+        </svg>
       </div>
 
       <div class="hero-content">

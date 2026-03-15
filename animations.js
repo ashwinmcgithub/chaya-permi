@@ -152,15 +152,6 @@ function initHeroEnter() {
       repeat: -1,
       delay: 1.2,
     });
-
-    // Very subtle tilt on liquid
-    gsap.to(".htea-liquid", {
-      rotation: 1.5,
-      duration: 2.5,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-    });
   }
 }
 
