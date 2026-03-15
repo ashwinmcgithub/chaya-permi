@@ -1025,19 +1025,30 @@ a { color: inherit; text-decoration: none; }
 .footer p { color: var(--muted); }
 .footer-note { margin-top: 24px; font-size: 0.8rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
 
-/* ===== HERO TEA CUP SVG (desktop decorative) ===== */
+/* ===== HERO TEA CUP SVG ===== */
 .hero-tea {
-  display: none; /* hidden on mobile */
+  display: block;
   position: absolute;
-  right: 9%;
-  bottom: 105px;
-  z-index: 3;
+  right: -8%;
+  bottom: 72px;
+  z-index: 2;
   pointer-events: none;
   will-change: transform;
+  transform: scale(0.48);
+  transform-origin: bottom right;
+  opacity: 0.65;
+}
+
+@media (min-width: 480px) {
+  .hero-tea { right: 0; transform: scale(0.58); opacity: 0.75; }
+}
+
+@media (min-width: 768px) {
+  .hero-tea { right: 4%; bottom: 88px; transform: scale(0.75); opacity: 0.88; }
 }
 
 @media (min-width: 1060px) {
-  .hero-tea { display: block; }
+  .hero-tea { right: 9%; bottom: 105px; transform: none; opacity: 1; }
 }
 
 .tea-svg {

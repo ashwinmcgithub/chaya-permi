@@ -136,23 +136,21 @@ function initHeroEnter() {
     ease: "back.out(1.6)",
   }, "-=0.35");
 
-  // Animated tea cup (desktop only)
-  if (window.innerWidth >= 1060) {
-    tl.from(".hero-tea", {
-      x: 80, opacity: 0, scale: 0.7,
-      duration: 1.0, ease: "back.out(1.5)",
-    }, "-=0.7");
+  // Tea cup entrance — all screen sizes
+  tl.from(".hero-tea", {
+    x: 60, opacity: 0, scale: 0.7,
+    duration: 1.0, ease: "back.out(1.5)",
+  }, "-=0.7");
 
-    // Continuous float up/down
-    gsap.to(".hero-tea", {
-      y: -20,
-      duration: 3.8,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: 1.2,
-    });
-  }
+  // Continuous float up/down
+  gsap.to(".hero-tea", {
+    y: -16,
+    duration: 3.8,
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+    delay: 1.2,
+  });
 }
 
 /* ── Hero parallax on scroll ──────────────────────────────── */
