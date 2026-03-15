@@ -1105,59 +1105,58 @@ a { color: inherit; text-decoration: none; }
 /* ===== MOBILE COMPACT (max 639px) ===== */
 @media (max-width: 639px) {
 
-  /* ── About: tighter padding, smaller cards ── */
-  .about { padding: 52px 16px; }
-  .about .section-header { margin-bottom: 24px; }
+  /* ── Global section spacing ── */
+  .section { padding: 48px 16px !important; }
+  .section-header { margin-bottom: 24px !important; }
+  .section-header h2 { font-size: 2rem !important; }
+
+  /* ── About: compact cards ── */
   .about-grid { gap: 10px; }
-  .about-card { padding: 20px 16px 18px; }
-  .about-card-icon { font-size: 1.4rem; margin-bottom: 10px; }
-  .about-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
-  .about-card p { font-size: 0.85rem; line-height: 1.6; }
+  .about-card { padding: 18px 14px 16px; }
+  .about-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .about-card h3 { font-size: 1.45rem; margin-bottom: 6px; }
+  .about-card p { font-size: 0.84rem; line-height: 1.55; }
 
-  /* ── Reviews: less space, smaller cards ── */
-  .reviews { padding: 44px 14px; }
-  .reviews-header-row { margin-bottom: 20px; gap: 10px; }
-  .reviews .section-header h2 { font-size: 1.9rem; }
-  .google-badge { padding: 6px 12px; font-size: 0.7rem; }
+  /* ── Reviews: compact ── */
+  .reviews-header-row { margin-bottom: 18px !important; gap: 8px; }
+  .google-badge { padding: 6px 11px; font-size: 0.7rem; }
   .google-badge .google-g { width: 16px; height: 16px; }
-  .reviews-slider { gap: 8px; }
-  .slider-btn { width: 34px; height: 34px; font-size: 0.8rem; flex-shrink: 0; }
+  .reviews-slider { gap: 6px; }
+  .slider-btn { width: 32px; height: 32px; font-size: 0.8rem; }
   .review-card {
-    padding: 16px;
-    gap: 10px;
-    min-height: 0;
-    margin: 0 4px;
-    min-width: calc(100% - 8px);
-  }
-  .review-card::before { display: none; } /* hide big quote decoration */
-  .review-avatar { width: 34px; height: 34px; font-size: 0.85rem; }
-  .review-card-header { gap: 10px; }
-  .review-card h4 { font-size: 0.85rem; margin-bottom: 3px; }
-  .review-rating { font-size: 0.78rem; }
-  .review-location { font-size: 0.7rem; padding: 2px 7px; }
-  .review-card p { font-size: 0.82rem; line-height: 1.55; }
-  .review-card-footer { padding-top: 8px; font-size: 0.68rem; gap: 6px; }
-
-  /* ── Locations: side-by-side 2 columns ── */
-  .locations { padding: 44px 10px; }
-  .locations .section-header { padding: 0 6px; margin-bottom: 20px; }
-  .locations .section-header h2 { font-size: 1.9rem; }
-  .location-grid {
-    grid-template-columns: repeat(2, 1fr);
+    padding: 14px 12px;
     gap: 8px;
+    min-height: 0;
+    margin: 0 3px;
+    min-width: calc(100% - 6px);
+  }
+  .review-card::before { display: none; }
+  .review-avatar { width: 32px; height: 32px; font-size: 0.82rem; }
+  .review-card-header { gap: 9px; }
+  .review-card h4 { font-size: 0.83rem; margin-bottom: 2px; }
+  .review-rating { font-size: 0.76rem; }
+  .review-location { font-size: 0.68rem; padding: 1px 7px; }
+  .review-card p { font-size: 0.82rem; line-height: 1.5; }
+  .review-card-footer { display: none; } /* hide footer on mobile to save space */
+
+  /* ── Locations: 2 columns side by side ── */
+  .location-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
   }
   .location-card { border-radius: var(--r-md); }
-  .location-map { height: 120px; }
-  .location-body { padding: 12px; }
-  .location-meta { margin-bottom: 10px; }
-  .location-meta h3 { font-size: 1.2rem; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .location-map { height: 110px; }
+  .location-body { padding: 10px 12px 14px; }
+  .location-meta { margin-bottom: 8px; }
+  .location-meta h3 { font-size: 1.15rem; letter-spacing: 0.03em; margin-bottom: 7px; }
   .location-address,
-  .location-hours { font-size: 0.72rem; line-height: 1.45; margin-bottom: 5px; }
+  .location-hours { font-size: 0.7rem; line-height: 1.4; margin-bottom: 4px; }
   .location-body .btn {
     margin-top: 10px;
-    padding: 9px 10px;
-    font-size: 0.68rem;
-    letter-spacing: 0.03em;
+    padding: 8px 10px;
+    font-size: 0.66rem;
+    letter-spacing: 0.02em;
+    width: 100%;
   }
 }
 
