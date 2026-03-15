@@ -28,7 +28,7 @@ const DEFAULT_CONFIG = {
 
 const CP_CONFIG = window.CP_CONFIG || DEFAULT_CONFIG;
 
-const PRELOADER_MAX_MS = 1520;
+const PRELOADER_MAX_MS = 5000; // safety net — GSAP handles the real timing
 const preloader = document.getElementById("preloader");
 let preloaderHidden = false;
 
@@ -43,21 +43,7 @@ window.addEventListener("load", () => {
   setTimeout(hidePreloader, 100);
 });
 
-const revealOnScroll = () => {
-  const elements = document.querySelectorAll("[data-animate], .about-card");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-  elements.forEach((el) => observer.observe(el));
-};
+// Scroll reveals handled by GSAP ScrollTrigger in animations.js
 
 const sampleInstagram = [
   {
@@ -356,10 +342,7 @@ const initActiveNav = () => {
 };
 
 const init = async () => {
-  revealOnScroll();
   initLocations();
-  initScrollProgress();
-  initActiveNav();
   await loadInstagram();
   const reviews = await fetchReviews();
   const cleaned = reviews.filter((review) => review.rating >= 4);

@@ -9,10 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   </head>
   <body>
 
-    <!-- Scroll progress -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
     <!-- ── LOADING SCREEN ── -->
@@ -43,6 +47,7 @@
         <source src="fornt page video.mp4" type="video/mp4" />
       </video>
       <div class="hero-media" aria-hidden="true"></div>
+      <div id="hero-particles" aria-hidden="true"></div>
       <div class="hero-content">
         <img class="hero-logo" src="chaya%20premi%20logo.jpg" alt="Chaya Premi" />
         <h1>Tea. Talks.<br /><span class="highlight">Thunderous</span> Vibes.</h1>
@@ -100,63 +105,18 @@
           <h2>The vibes we pour daily.</h2>
         </div>
         <div class="gram-grid">
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-55.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-86.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-98.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-129.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-135.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-136.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-177.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-211.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-232.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-707.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="gram-item">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Video-771.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-55.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-86.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-98.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-129.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-136.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-177.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-211.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-232.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-707.mp4" type="video/mp4" /></video></div>
+          <div class="gram-item"><video autoplay muted loop playsinline preload="none"><source src="Video-771.mp4" type="video/mp4" /></video></div>
         </div>
-        <p class="section-footnote">Tap to play &bull; All videos shot at Chaya Premi</p>
+        <p class="section-footnote">All videos shot at Chaya Premi</p>
       </section>
 
       <!-- ── REVIEWS ── -->
@@ -167,7 +127,6 @@
             <h2>Real words from real chai people.</h2>
           </div>
           <div class="google-badge">
-            <!-- Google G SVG -->
             <svg class="google-g" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -178,15 +137,15 @@
           </div>
         </div>
         <div class="reviews-slider">
-          <button class="slider-btn" id="reviews-prev" aria-label="Previous review">&#8592;</button>
+          <button class="slider-btn" id="reviews-prev" aria-label="Previous">&#8592;</button>
           <div class="slider-track" aria-live="polite">
             <div class="slider-inner" id="reviews-track"></div>
           </div>
-          <button class="slider-btn" id="reviews-next" aria-label="Next review">&#8594;</button>
+          <button class="slider-btn" id="reviews-next" aria-label="Next">&#8594;</button>
         </div>
       </section>
 
-      <!-- ── LOCATIONS + MAPS ── -->
+      <!-- ── LOCATIONS ── -->
       <section class="section locations" id="find-us">
         <div class="section-header">
           <p class="eyebrow">Find Us</p>
@@ -194,14 +153,10 @@
         </div>
         <div class="location-grid">
           <article class="location-card" data-animate>
-            <iframe
-              class="location-map"
+            <iframe class="location-map"
               src="https://maps.google.com/maps?q=Chaya+Premi+Thodupuzha+Kerala&hl=en&z=16&output=embed"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Chaya Premi Thodupuzha"
-            ></iframe>
+              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Chaya Premi Thodupuzha"></iframe>
             <div class="location-body">
               <div class="location-meta">
                 <h3>Thodupuzha</h3>
@@ -212,14 +167,10 @@
             </div>
           </article>
           <article class="location-card" data-animate>
-            <iframe
-              class="location-map"
+            <iframe class="location-map"
               src="https://maps.google.com/maps?q=Chaya+Premi+Muvattupuzha+Kerala&hl=en&z=16&output=embed"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Chaya Premi Muvattupuzha"
-            ></iframe>
+              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Chaya Premi Muvattupuzha"></iframe>
             <div class="location-body">
               <div class="location-meta">
                 <h3>Muvattupuzha</h3>
@@ -273,6 +224,10 @@
         },
       };
     </script>
+
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script src="app.js"></script>
+    <script src="animations.js"></script>
   </body>
 </html>
